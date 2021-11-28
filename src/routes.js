@@ -2,6 +2,7 @@ const express = require("express");
 const routes = express.Router();
 const ProfileController = require("./controllers/ProfileController")
 const JobController = require("./controllers/JobController")
+const DashboardController = require("./controllers/DashboardController")
 
 //const views = __dirname + "/views/"; Refatoração setada o views em server.js
 // O EJS já entende por padrão a pasta views, porém como ela está dentro da pasta 'src', preciso colocar este path
@@ -9,7 +10,7 @@ const JobController = require("./controllers/JobController")
 // Object Literal : Ao criar um objeto, já terá sua propriedades definidas na escrita do codigo.
 
 // *Request / Response* //
-routes.get("/", JobController.index);
+routes.get("/", DashboardController.index);
 routes.get("/job", JobController.create);
 routes.post("/job", JobController.save);
 routes.get("/job/:id", JobController.show);
