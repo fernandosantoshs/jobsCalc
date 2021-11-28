@@ -1,4 +1,4 @@
-const data = {
+let data = {
   name: "Fernando",
   avatar: "https://avatars.githubusercontent.com/u/44985596?v=4",
   //Caso o nome da propriedade esteja separado por '-' ou '.', deve-se encapsular o nome com ""
@@ -10,7 +10,11 @@ const data = {
 };
 
 module.exports = {
-    get() {
-        return data
-    }
-}
+  get() {
+    return data;
+  },
+
+  update(newData) {
+    data = newData;
+  },
+};

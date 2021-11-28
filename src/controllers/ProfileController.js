@@ -3,7 +3,7 @@ const Profile = require('../model/Profile')
 module.exports = {
     index(req, res) {
       //Quando o objeto tem mesmo nome para propriedade e valor (profile), pode-se resumir { profile : profile } para { profile }
-      return res.render("profile", { profile: Profile.get(data) });
+      return res.render("profile", { profile: Profile.get() });
     },
 
     update(req, res) {
@@ -21,11 +21,12 @@ module.exports = {
       const valueHour = data["monthly-budget"] / monthlyTotalHours;
 
       // Joga o data que veio do req.body para o data do obj Profile
-      Profile.data = {
-        ...Profile.data,
+      Profile.update({
+        ...Profile.get(),
         ...req.body,
-        "value-hour": valueHour,
-      };
+        "value-hour": valueHour
+      }) 
+      
       return res.redirect("profile");
     },
   }
