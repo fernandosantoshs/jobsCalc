@@ -4,7 +4,7 @@ module.exports = {
       const remainingDays = (job["total-hours"] / job["daily-hours"]).toFixed(); // toFixed() funcao do JS, arredonda um number para o numero de casas decimais que passar por parametro -> 12.1.toFixed() = "12" // 12.5.toFixed() = 13. Ao passar por essa funcao, o resultado é uma string.
 
       // Data de cricao do projeto
-      const createdDate = new Date(job.createAt);
+      const createdDate = new Date(job.created_at);
 
       // o .getDate() retorna o dia do mes (1 a 31). O getDay() retorna o dia da semana (0 a 6). Entao dueDay será o dia do mes que foi criado o project e somado aos dias restantes
       const dueDay = createdDate.getDate() + Number(remainingDays);

@@ -17,7 +17,7 @@ module.exports = {
       name: req.body.name,
       "daily-hours": req.body["daily-hours"],
       "total-hours": req.body["total-hours"],
-      createAt: Date.now(),
+      created_at: Date.now(),
     })
 
     return res.redirect("/");
