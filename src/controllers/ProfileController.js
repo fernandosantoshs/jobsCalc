@@ -1,12 +1,12 @@
 const Profile = require('../model/Profile')
 
 module.exports = {
-    index(req, res) {
+    async index(req, res) {
       //Quando o objeto tem mesmo nome para propriedade e valor (profile), pode-se resumir { profile : profile } para { profile }
-      return res.render("profile", { profile: Profile.get() });
+      return res.render("profile", { profile: await Profile.get() });
     },
 
-    update(req, res) {
+    async update(req, res) {
       // req.body para trazer os dados
       const data = req.body;
       // semanas por ano
@@ -20,9 +20,10 @@ module.exports = {
       // Valor da hora
       const valueHour = data["monthly-budget"] / monthlyTotalHours;
 
+      const profile = await Profile.get()
       // Joga o data que veio do req.body para o data do obj Profile
-      Profile.update({
-        ...Profile.get(),
+      await Profile.update({
+        ...profile,
         ...req.body,
         "value-hour": valueHour
       }) 
