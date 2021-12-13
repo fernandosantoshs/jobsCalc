@@ -7,9 +7,9 @@ module.exports = {
     return res.render("job");
   },
 
-  save(req, res) {
+  async save(req, res) {
     // Em JS, o símbolo "?" no fim de uma atribuicao, é um opcional 'Logical Chaining operator'(Encadeamento). Se o valor da primeira opção (antes do '?'), for falso, será atribuído o segundo valor que foi passado. Neste caso, o jobId será o length de jobs -1 (Assim tenho o índice no array que começa com 0), mas caso nao exista item no array, receberá '1' no push().
-    const jobs = Job.get()
+    const jobs = await Job.get()
     const lastId = jobs[jobs.length - 1]?.id || 0;
 
     Job.create({
@@ -23,9 +23,9 @@ module.exports = {
     return res.redirect("/");
   },
 
-  show(req, res) {
+  async show(req, res) {
     const jobId = req.params.id;
-    const jobs = Job.get()
+    const jobs = await Job.get()
 
     const job = jobs.find((job) => Number(job.id) === Number(jobId));
 
@@ -33,16 +33,16 @@ module.exports = {
       return res.send("Job not found! :(");
     }
 
-    const profile = Profile.get()
+    const profile = await Profile.get()
 
     job.budget = JobUtils.calculateBudget(job, profile["value-hour"]);
 
     return res.render("job-edit", { job });
   },
 
-  update(req, res) {
+  async update(req, res) {
     const jobId = req.params.id;
-    const jobs = Job.get()
+    const jobs = await Job.get()
 
     const job = jobs.find((job) => Number(job.id) === Number(jobId));
 

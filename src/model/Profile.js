@@ -10,6 +10,7 @@ module.exports = {
     await db.close()
 
     return {
+      id: data.id,
       name: data.name,
       avatar: data.avatar,
       "monthly-budget": data.monthly_budget,
@@ -30,7 +31,8 @@ module.exports = {
     days_per_week = ${newData["days-per-week"]},
     hours_per_day = ${newData["hours-per-day"]},
     vacation_per_year = ${newData["vacation-per-year"]},
-    value_hour = ${newData["value-hour"]}`)
+    value_hour = ${newData["value-hour"]}
+    WHERE id=${newData.id}`)
 
     await db.close()
   }
