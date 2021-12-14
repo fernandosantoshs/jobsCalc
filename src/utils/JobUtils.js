@@ -15,8 +15,8 @@ module.exports = {
       const timeDiffInMs = dueDateInMs - Date.now();
 
       //transformar ms em dias
-      const daysInMs = 1000 * 60 * 60 * 24;
-      const dayDiff = Math.floor(timeDiffInMs / daysInMs); // Math.floor vai arredondar o número de dias para baixo.
+      const dayInMs = 1000 * 60 * 60 * 24;
+      const dayDiff = Math.ceil(timeDiffInMs / dayInMs); // Math.floor vai arredondar o número de dias para baixo. o Math.ceil arredonda para cima. Math.floor(14.7) = 14 / Math.ceil(14.6) = 15
 
       return dayDiff;
     },

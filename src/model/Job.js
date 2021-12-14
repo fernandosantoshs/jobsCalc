@@ -14,7 +14,7 @@ module.exports = {
       name: job.name,
       "daily-hours": job.daily_hours,
       "total-hours": job.total_hours,
-      create_at: job.created_at,
+      created_at: job.created_at,
     }));
   },
 
