@@ -83,7 +83,7 @@
           <% jobs.forEach((job) => { %> 
 
             <div class="card <%= job.status %>" data-id=" <%= job.id %> ">
-              <div class="id column">1</div>
+              <div class="id column"> <%= job.id %> </div>
                 <div class="name column">
                   <%= job.name %> 
                 </div>
@@ -112,7 +112,7 @@
               <div class="actions column flex">
                 <p class="sr-only">Ações</p>
                 <a 
-                href="/job/<%= job.id %> " 
+                href="/job/<%= job.id %>" 
                 class="button white edit" 
                 title="Editar Job">
                 <img src="/images/edit-24.svg" alt="Editar Job" />
